@@ -1,0 +1,141 @@
+/* Gaya umum */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('coffee_background.gif'); /* Pastikan jalur ini benar */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Agar video mengisi layar */
+  transform: translate(-50%, -50%);
+  background-color: rgba(247, 247, 247, 0.9); /* Transparan */
+  z-index: 1; /* Agar form di atas video */
+}
+
+/* Memperbaiki tampilan form login */
+.login-form {
+  width: 100%;
+  max-width: 400px; /* Lebar maksimum form */
+  margin: auto; /* Untuk memusatkan secara horizontal */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Latar belakang semi-transparan */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: absolute; /* Ubah dari relative ke absolute */
+  top: 50%; /* Tempatkan form di tengah vertikal */
+  left: 50%; /* Tempatkan form di tengah horizontal */
+  transform: translate(-50%, -50%); /* Untuk menggeser form ke tengah */
+  z-index: 1; /* Supaya form di atas video */
+}
+  
+  .login-form input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .login-form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-form input[type="submit"]:hover {
+    background-color: #5a6268;
+  }
+  
+  /* Menambahkan efek animasi pada ikon di background */
+.coffee-spill {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  background: url('coffee_spill.png') no-repeat center center; /* Pastikan ikon ada */
+  background-size: contain;
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* Efek hover pada button login */
+.login-btn:hover {
+  background-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(0, 123, 255, 0.3);
+  transition: 0.3s;
+}
+
+.register-form {
+  position: absolute;
+  top: 50%; /* Adjust vertical position */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1;
+  color: #ccc;
+}
+
+@keyframes colorGlow {
+    0% { color: red; }
+    25% { color: blue; }
+    50% { color: green; }
+    75% { color: yellow; }
+    100% { color: purple; }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.shake {
+  animation: shake-animation 0.5s;
+}
+
+@keyframes shake-animation {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}

@@ -1,0 +1,229 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Background Body dengan Transisi Animasi */
+body {
+  background-size: 400% 400%;
+  animation: colorfulBackground 15s infinite alternate;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Colorful background animation */
+  @keyframes colorfulBackground {
+    0% { background-color: #FF1493; }  /* Pink cerah */
+    25% { background-color: #FFD700; } /* Emas */
+    50% { background-color: #00FF7F; } /* Hijau Muda */
+    75% { background-color: #1E90FF; } /* Biru Langit */
+    100% { background-color: #FF4500; } /* Oranye */
+}
+
+
+/* Efek Bintang di Navbar */
+nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(white, transparent 70%);
+  opacity: 0.6;
+  animation: starTwinkle 4s infinite;
+  background-size: 200px 200px;
+}
+
+/* Animasi Bintang */
+@keyframes starTwinkle {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 200px 200px;
+  }
+}
+
+/* Mengurangi Jumlah Bintang */
+nav::before {
+  background-image: radial-gradient(white 1px, transparent 1px),
+                    radial-gradient(white 2px, transparent 2px),
+                    radial-gradient(white 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px, 200px 200px;
+  opacity: 0.5;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #FFD700;
+}
+
+#searchForm input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#searchForm button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #FFD700;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#searchForm button:hover {
+  background-color: #333;
+  color: #FFD700;
+}
+
+/* Hero Section */
+.hero-section {
+  background-image: url('../asset/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: #fff;
+  padding: 80px 20px;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+/* Product Grid Styling */
+.container {
+  padding: 30px;
+}
+
+h2, h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4A4A4A;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-item h3 {
+  margin: 15px 0;
+  font-size: 1.5rem;
+  color: #4A4A4A;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  margin: 10px 0;
+}
+
+.discount-price {
+  font-size: 1.25rem;
+  color: #FF4500;
+  margin-bottom: 15px;
+}
+
+.buy-button {
+  padding: 10px 20px;
+  background-color: #FFD700;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.buy-button:hover {
+  background-color: #333;
+  color: #FFD700;
+}
+
+/* Footer Styling */
+#footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #4A4A4A;
+  color: #fff;
+  margin-top: 20px;
+}
+
+#footer p {
+  margin: 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  nav ul li {
+      margin-bottom: 10px;
+  }
+
+  .hero-section h1 {
+      font-size: 2rem;
+  }
+
+  .hero-section p {
+      font-size: 1rem;
+  }
+
+  .product-grid {
+      grid-template-columns: 1fr;
+  }
+}

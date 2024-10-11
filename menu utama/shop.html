@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css">
+    <title>Shop</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="beranda.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="diskon.html">Diskon</a></li>
+            <li><a href="setting.html">Settings</a></li>
+            <li>
+                <form id="searchForm" action="search.html" method="GET">
+                    <input type="text" name="query" placeholder="Search ..." required>
+                    <button type="submit">Search</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Pilihan Kopi Terbaik Kami</h1>
+        <div class="product-grid">
+            <!-- Kopi Arabika -->
+            <div class="product-item">
+                <img src="../asset/kopi1.jpg" alt="Kopi Arabika" class="product-image">
+                <h3>Kopi Arabika</h3>
+                <p>Kopi Arabika terkenal dengan cita rasa yang halus dan asam yang menyegarkan. Ditanam di ketinggian, kopi ini memiliki aroma yang kuat dan karakteristik unik.</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <!-- Kopi Robusta -->
+            <div class="product-item">
+                <img src="../asset/kopi2.jpg" alt="Kopi Robusta" class="product-image">
+                <h3>Kopi Robusta</h3>
+                <p>Kopi Robusta memiliki kandungan kafein yang tinggi dan rasa lebih kuat. Cocok untuk pecinta kopi yang menginginkan kekuatan rasa.</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <!-- Kopi Luwak -->
+            <div class="product-item">
+                <img src="../asset/kopi3.jpg" alt="Kopi Luwak" class="product-image">
+                <h3>Kopi Luwak</h3>
+                <p>Kopi termahal di dunia, hasil dari biji yang diproses oleh musang. Rasanya sangat khas dan lembut.</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <!-- Kopi Keton -->
+            <div class="product-item">
+                <img src="../asset/kopi4.jpg" alt="Kopi Keton" class="product-image">
+                <h3>Kopi Keton</h3>
+                <p>Kopi dengan teknik pemanggangan khusus untuk menghasilkan rasa yang kompleks, ideal untuk menemani waktu santai Anda.</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <p>&copy; 2024 Ghost Day Coffee. All rights reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="background">
+        <video autoplay muted loop class="background-video">
+            <source src="../asset/6702cec59478dac80bfba71a.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="coffee-spill"></div> <!-- Ikon tumpahan kopi -->
+    </div>
+
+    <div class="register-form">
+        <h2>Register</h2>
+        <form id="registerForm" action="#" method="POST">
+            <table>
+                <tr>
+                    <td><label for="regUsername">Username:</label></td>
+                    <td><input type="text" id="regUsername" name="username" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="regPassword">Password:</label></td>
+                    <td><input type="password" id="regPassword" name="password" required></td>
+                </tr>
+                <tr>
+                    <td><label for="confirmPassword">Confirm Password:</label></td>
+                    <td><input type="password" id="confirmPassword" name="confirmPassword" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Register">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <p>Already have an account? <a href="../index.html">Login here</a></p>
+        <p id="regErrorMessage" class="error-message"></p>
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("regUsername").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("regPassword").value.trim();
+            const confirmPassword = document.getElementById("confirmPassword").value.trim();
+            const errorMessage = document.getElementById("regErrorMessage");
+
+            errorMessage.textContent = "";
+
+            if (username === "" || email === "" || password === "" || confirmPassword === "") {
+                errorMessage.textContent = "Please fill in all fields.";
+                return false;
+            }
+
+            if (password.length < 6) {
+                errorMessage.textContent = "Password must be at least 6 characters.";
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "Passwords do not match.";
+                return false;
+            }
+
+            // Redirect to the main menu (beranda.html)
+            window.location.href = "../menu%20utama/beranda.html";
+        });
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>

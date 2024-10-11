@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="beranda.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="diskon.html">Diskon</a></li>
+            <li><a href="setting.html">Settings</a></li>
+            <li>
+                <form id="searchForm" action="search.html" method="GET">
+                    <input type="text" name="query" placeholder="Search ..." required>
+                    <button type="submit">Search</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+    <header class="hero-section">
+        <h1>Selamat Datang di Ghost Day Coffee</h1>
+        <p>Diskon Spesial Hari Ini! Jangan lewatkan kesempatan untuk mendapatkan kopi premium dengan harga terbaik.</p>
+    </header>
+
+    <div class="container">
+        <h2>Penawaran Terbaik</h2>
+        <div class="product-grid">
+            <!-- Produk 1 -->
+            <div class="product-item">
+                <img src="../asset/kopi3.jpg" alt="Produk 1" class="product-image">
+                <h3>Arabica Premium</h3>
+                <p class="original-price">Rp 50.000</p>
+                <p class="discount-price">Rp 40.000</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <!-- Produk 2 -->
+            <div class="product-item">
+                <img src="../asset/kopi7.jpg" alt="Produk 2" class="product-image">
+                <h3>Robusta Spesial</h3>
+                <p class="original-price">Rp 75.000</p>
+                <p class="discount-price">Rp 60.000</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <!-- Produk 3 -->
+            <div class="product-item">
+                <img src="../asset/kopi8.jpg" alt="Produk 3" class="product-image">
+                <h3>Luwak Premium</h3>
+                <p class="original-price">Rp 100.000</p>
+                <p class="discount-price">Rp 80.000</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <!-- Produk 4 -->
+            <div class="product-item">
+                <img src="../asset/kopi6.jpg" alt="Produk 4" class="product-image">
+                <h3>Blend Khas Ghost Day</h3>
+                <p class="original-price">Rp 125.000</p>
+                <p class="discount-price">Rp 100.000</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <p>&copy; 2024 Ghost Day Coffee. All rights reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

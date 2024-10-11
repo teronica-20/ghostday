@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pembelian.css"> <!-- Link ke CSS eksternal -->
+    <title>Pembelian</title>
+</head>
+<body>
+    <header>
+        <h1>Halaman Pembelian</h1>
+    </header>
+    
+    <div class="container">
+        <div class="product-details">
+            <img src="kopi3.jpg" alt="Produk 1" class="product-image">
+            <h2>Produk 1</h2>
+            <p class="original-price">Rp 50.000</p>
+            <p class="discount-price">Rp 40.000</p>
+            <p class="description">Nikmati kopi berkualitas tinggi dengan cita rasa yang menggoda. Dapatkan diskon spesial hari ini!</p>
+        </div>
+
+        <div class="purchase-form">
+            <h3>Pesan Sekarang!</h3>
+            <form action="process_order.php" method="POST"> <!-- Arahkan ke file PHP -->
+                <label for="nama">Nama Pelanggan:</label>
+                <input type="text" id="nama" name="nama" required>
+
+                <label for="quantity">Jumlah:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+                <!-- Pemilihan Alamat Pengiriman -->
+                <label for="alamat">Alamat Pengiriman:</label>
+                <textarea id="alamat" name="alamat" required></textarea>
+
+                <!-- Metode Pembayaran -->
+                <label for="payment-method">Metode Pembayaran:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="bank">Transfer Bank</option>
+                    <option value="dana">Dana</option>
+                    <option value="gopay">Gopay</option>
+                </select>
+
+                <!-- Estimasi Waktu Pengiriman -->
+                <label for="delivery-date">Tanggal Estimasi Sampai:</label>
+                <input type="date" id="delivery-date" name="delivery-date" required>
+
+                <label for="delivery-time">Jam Estimasi Sampai:</label>
+                <input type="time" id="delivery-time" name="delivery-time" required>
+
+                <!-- Tombol Submit -->
+                <button type="submit" class="buy-button">Beli Sekarang</button>
+            </form>
+        </div>
+    </div>
+    <form action="../sql/hasil.php" method="POST" onsubmit="return showNotification()"> <!-- Arahkan ke file PHP -->
+
+
+    <footer id="footer">
+        <p>Copyright &copy; 2024 Ghost Day. All rights reserved.</p>
+    </footer>
+    <script>
+        function showNotification() {
+            alert("Ghost Day mengucapkan Terimakasih atas pembelian anda, pesanan akan di antarkan.");
+            window.location.href = "../menu%20utama/beranda.html"; // Ganti ke beranda.html
+            return false; // Mencegah pengiriman form untuk demonstrasi
+        }
+    </script>    
+    <script src="../script.js"></script>
+</body>
+</html>

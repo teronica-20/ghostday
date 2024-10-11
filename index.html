@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background">
+        <video autoplay muted loop class="background-video">
+            <source src="asset/6702cec59478dac80bfba71a.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="coffee-spill"></div> <!-- Ikon tumpahan kopi -->
+    </div>
+
+    <div class="login-form">
+        <h2>Login</h2>
+        <form id="loginForm" action="#" method="POST">
+            <table>
+                <tr>
+                    <td><label for="username">Username:</label></td>
+                    <td><input type="text" id="username" name="username" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Login" class="login-btn">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <p>Don't have an account? <a href="register/register.html">Register here</a></p>
+        <p id="errorMessage" class="error-message"></p>
+    </div>
+    <div id="footer"></div>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const errorMessage = document.getElementById("errorMessage");
+
+            errorMessage.textContent = "";
+
+            if (username === "" || password === "") {
+                errorMessage.textContent = "Please fill in all fields.";
+                return false;
+            }
+
+            if (password.length < 6) {
+                errorMessage.textContent = "Password must be at least 6 characters.";
+                return false;
+            }
+
+            // Redirect to the main menu (beranda.html)
+            window.location.href = "menu%20utama/beranda.html";
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
