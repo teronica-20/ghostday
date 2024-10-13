@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="menu.css">
     <title>Shop</title>
 </head>
+
 <body>
     <nav>
         <ul>
@@ -22,35 +24,72 @@
         </ul>
     </nav>
 
+    <header class="hero-section">
+        <h1>Semua Produk Kami</h1>
+        <p>Temukan varian kopi terbaik untuk Anda.</p>
+    </header>
+
     <div class="container">
-        <h1>Pilihan Kopi Terbaik Kami</h1>
         <div class="product-grid">
-            <!-- Kopi Arabika -->
+            <!-- Produk 1 -->
             <div class="product-item">
-                <img src="../asset/kopi1.jpg" alt="Kopi Arabika" class="product-image">
-                <h3>Kopi Arabika</h3>
-                <p>Kopi Arabika terkenal dengan cita rasa yang halus dan asam yang menyegarkan. Ditanam di ketinggian, kopi ini memiliki aroma yang kuat dan karakteristik unik.</p>
+                <img src="../asset/kp1.jpg" alt="Produk 1" class="product-image">
+                <h3>Scarlet Chocolatos</h3>
+                <p class="discount-price">Rp 30.000</p>
                 <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
             </div>
-            <!-- Kopi Robusta -->
+            <!-- Produk 2 -->
             <div class="product-item">
-                <img src="../asset/kopi2.jpg" alt="Kopi Robusta" class="product-image">
-                <h3>Kopi Robusta</h3>
-                <p>Kopi Robusta memiliki kandungan kafein yang tinggi dan rasa lebih kuat. Cocok untuk pecinta kopi yang menginginkan kekuatan rasa.</p>
+                <img src="../asset/kp2.jpg" alt="Produk 2" class="product-image">
+                <h3>Dark Chocolate</h3>
+                <p class="discount-price">Rp 20.000</p>
                 <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
             </div>
-            <!-- Kopi Luwak -->
+            <!-- Produk 3 -->
             <div class="product-item">
-                <img src="../asset/kopi3.jpg" alt="Kopi Luwak" class="product-image">
-                <h3>Kopi Luwak</h3>
-                <p>Kopi termahal di dunia, hasil dari biji yang diproses oleh musang. Rasanya sangat khas dan lembut.</p>
+                <img src="../asset/kp5.jpg" alt="Produk 3" class="product-image">
+                <h3>Dark Coffee</h3>
+                <p class="discount-price">Rp 25.000</p>
                 <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
             </div>
-            <!-- Kopi Keton -->
+            <!-- Produk 4 -->
             <div class="product-item">
-                <img src="../asset/kopi4.jpg" alt="Kopi Keton" class="product-image">
-                <h3>Kopi Keton</h3>
-                <p>Kopi dengan teknik pemanggangan khusus untuk menghasilkan rasa yang kompleks, ideal untuk menemani waktu santai Anda.</p>
+                <img src="../asset/kp6.jpg" alt="Produk 4" class="product-image">
+                <h3>Caramel</h3>
+                <p class="discount-price">Rp 25.000</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <!-- Produk 5 -->
+            <div class="product-item">
+                <img src="../asset/kp7.jpg" alt="Produk 5" class="product-image">
+                <h3>Coffee Milk</h3>
+                <p class="discount-price">Rp 20.000</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <!-- Produk 6 -->
+            <div class="product-item">
+                <img src="../asset/kp8.jpg" alt="Produk 6" class="product-image">
+                <h3>Creamy Foam</h3>
+                <p class="discount-price">Rp 40.000</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <!-- Produk Tambahan -->
+            <div class="product-item">
+                <img src="../asset/kp9.jpg" alt="Produk 7" class="product-image">
+                <h3>Espresso</h3>
+                <p class="discount-price">Rp 35.000</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <div class="product-item">
+                <img src="../asset/kp11.jpg" alt="Produk 8" class="product-image">
+                <h3>Cappuccino</h3>
+                <p class="discount-price">Rp 45.000</p>
+                <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
+            </div>
+            <div class="product-item">
+                <img src="../asset/kp12.jpg" alt="Produk 9" class="product-image">
+                <h3>Latte</h3>
+                <p class="discount-price">Rp 50.000</p>
                 <a href="../pembelian/pembelian.html"><button class="buy-button">Beli Sekarang</button></a>
             </div>
         </div>
@@ -59,7 +98,16 @@
     <footer id="footer">
         <p>&copy; 2024 Ghost Day Coffee. All rights reserved.</p>
     </footer>
+    <script>
+        function addToCart(name, price, imgSrc) {
+    localStorage.setItem('productName', name);
+    localStorage.setItem('productPrice', price);
+    localStorage.setItem('productImg', imgSrc);
+    window.location.href = '../pembelian/pembelian.html';
+}
+    </script>
 
     <script src="../script.js"></script>
 </body>
+
 </html>

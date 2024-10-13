@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pembelian.css"> <!-- Link ke CSS eksternal -->
+    <link rel="stylesheet" href="pembelian.css">
     <title>Pembelian</title>
 </head>
 <body>
@@ -12,28 +12,28 @@
     </header>
     
     <div class="container">
-        <div class="product-details">
-            <img src="kopi3.jpg" alt="Produk 1" class="product-image">
-            <h2>Produk 1</h2>
-            <p class="original-price">Rp 50.000</p>
-            <p class="discount-price">Rp 40.000</p>
-            <p class="description">Nikmati kopi berkualitas tinggi dengan cita rasa yang menggoda. Dapatkan diskon spesial hari ini!</p>
+        <h1>Produk Pembelian</h1>
+        <div class="product-detail">
+            <img id="productImage" src="" alt="Product Image" class="product-image">
+            <h2 id="productName"></h2>
+            <p id="productPrice"></p>
         </div>
+    </div>
 
         <div class="purchase-form">
             <h3>Pesan Sekarang!</h3>
-            <form action="../sql/hasil.php" method="POST" onsubmit="return showNotification()">
+            <form action="../sql/hasil.php" method="POST" onsubmit="return handlePaymentRedirect()">
                 <label for="nama">Nama Pelanggan:</label>
                 <input type="text" id="nama" name="nama" required>
-            
+
                 <label for="quantity">Jumlah:</label>
                 <input type="number" id="quantity" name="quantity" min="1" value="1" required>
-            
+
                 <label for="alamat">Alamat Pengiriman:</label>
                 <textarea id="alamat" name="alamat" required></textarea>
 
                 <label for="payment-method">Metode Pembayaran:</label>
-                <select id="payment-method" name="payment_method" required onchange="redirectPayment(this.value)">
+                <select id="payment-method" name="payment_method" required>
                     <option value="">Pilih Metode Pembayaran</option>
                     <option value="bank_bca">BCA</option>
                     <option value="bank_bni">BNI</option>
@@ -44,7 +44,7 @@
                 </select>
 
                 <label for="delivery-time">Jam Estimasi Sampai:</label>
-                <input type="time" id="delivery-time" name="delivery-time" required>
+                <input type="time" id="delivery-time" name="delivery_time" required>
 
                 <button type="submit" class="buy-button">Beli Sekarang</button>
             </form>
@@ -56,38 +56,22 @@
     </footer>
 
     <script>
-        function showNotification() {
-            alert("Ghost Day mengucapkan Terimakasih atas pembelian anda, pesanan akan di antarkan.");
-            return true; // Biarkan form terkirim
+        window.onload = function() {
+            document.getElementById('productName').innerText = localStorage.getItem('productName');
+            document.getElementById('productPrice').innerText = localStorage.getItem('productPrice');
+            document.getElementById('productImage').src = localStorage.getItem('productImg');
         }
-
         function handlePaymentRedirect() {
-        var paymentMethod = document.getElementById("payment-method").value;
+            var paymentMethod = document.getElementById("payment-method").value;
 
-        // Tampilkan notifikasi pembelian
-        alert("Ghost Day mengucapkan Terimakasih atas pembelian anda, pesanan akan diantarkan.");
+            if (paymentMethod === "") {
+                alert("Pilih metode pembayaran terlebih dahulu!");
+                return false;
+            }
 
-        // Redirect berdasarkan pilihan pembayaran
-        if (paymentMethod === "bank_bca") {
-            window.location.href = "https://www.bca.co.id"; // Redirect ke halaman Bank BCA
-        } else if (paymentMethod === "bank_bni") {
-            window.location.href = "https://www.bni.co.id"; // Redirect ke halaman Bank BNI
-        } else if (paymentMethod === "bank_bri") {
-            window.location.href = "https://www.bri.co.id"; // Redirect ke halaman Bank BRI
-        } else if (paymentMethod === "bank_mandiri") {
-            window.location.href = "https://www.bankmandiri.co.id"; // Redirect ke halaman Bank Mandiri
-        } else if (paymentMethod === "dana") {
-            window.location.href = "https://link.dana.id/m/dana"; // Redirect ke Dana
-        } else if (paymentMethod === "gopay") {
-            window.location.href = "https://www.gojek.com/gopay/"; // Redirect ke Gopay
-        } else {
-            alert("Pilih metode pembayaran terlebih dahulu!"); // Notifikasi jika belum memilih metode pembayaran
-            return false; // Mencegah form dikirim
+            alert("Mengalihkan Anda ke halaman pembayaran " + paymentMethod + "...");
+            return true; // Form akan tetap dikirim ke hasil.php
         }
-
-        return false; // Mencegah form dikirim secara normal agar diarahkan sesuai metode pembayaran
-    }
     </script>
-    <script src="../script.js"></script>
 </body>
 </html>
