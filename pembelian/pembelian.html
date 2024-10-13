@@ -22,50 +22,72 @@
 
         <div class="purchase-form">
             <h3>Pesan Sekarang!</h3>
-            <form action="process_order.php" method="POST"> <!-- Arahkan ke file PHP -->
+            <form action="../sql/hasil.php" method="POST" onsubmit="return showNotification()">
                 <label for="nama">Nama Pelanggan:</label>
                 <input type="text" id="nama" name="nama" required>
-
+            
                 <label for="quantity">Jumlah:</label>
                 <input type="number" id="quantity" name="quantity" min="1" value="1" required>
-
-                <!-- Pemilihan Alamat Pengiriman -->
+            
                 <label for="alamat">Alamat Pengiriman:</label>
                 <textarea id="alamat" name="alamat" required></textarea>
 
-                <!-- Metode Pembayaran -->
                 <label for="payment-method">Metode Pembayaran:</label>
-                <select id="payment-method" name="payment-method" required>
-                    <option value="bank">Transfer Bank</option>
+                <select id="payment-method" name="payment_method" required onchange="redirectPayment(this.value)">
+                    <option value="">Pilih Metode Pembayaran</option>
+                    <option value="bank_bca">BCA</option>
+                    <option value="bank_bni">BNI</option>
+                    <option value="bank_bri">BRI</option>
+                    <option value="bank_mandiri">Mandiri</option>
                     <option value="dana">Dana</option>
                     <option value="gopay">Gopay</option>
                 </select>
 
-                <!-- Estimasi Waktu Pengiriman -->
-                <label for="delivery-date">Tanggal Estimasi Sampai:</label>
-                <input type="date" id="delivery-date" name="delivery-date" required>
-
                 <label for="delivery-time">Jam Estimasi Sampai:</label>
                 <input type="time" id="delivery-time" name="delivery-time" required>
 
-                <!-- Tombol Submit -->
                 <button type="submit" class="buy-button">Beli Sekarang</button>
             </form>
         </div>
     </div>
-    <form action="../sql/hasil.php" method="POST" onsubmit="return showNotification()"> <!-- Arahkan ke file PHP -->
-
 
     <footer id="footer">
         <p>Copyright &copy; 2024 Ghost Day. All rights reserved.</p>
     </footer>
+
     <script>
         function showNotification() {
             alert("Ghost Day mengucapkan Terimakasih atas pembelian anda, pesanan akan di antarkan.");
-            window.location.href = "../menu%20utama/beranda.html"; // Ganti ke beranda.html
-            return false; // Mencegah pengiriman form untuk demonstrasi
+            return true; // Biarkan form terkirim
         }
-    </script>    
+
+        function handlePaymentRedirect() {
+        var paymentMethod = document.getElementById("payment-method").value;
+
+        // Tampilkan notifikasi pembelian
+        alert("Ghost Day mengucapkan Terimakasih atas pembelian anda, pesanan akan diantarkan.");
+
+        // Redirect berdasarkan pilihan pembayaran
+        if (paymentMethod === "bank_bca") {
+            window.location.href = "https://www.bca.co.id"; // Redirect ke halaman Bank BCA
+        } else if (paymentMethod === "bank_bni") {
+            window.location.href = "https://www.bni.co.id"; // Redirect ke halaman Bank BNI
+        } else if (paymentMethod === "bank_bri") {
+            window.location.href = "https://www.bri.co.id"; // Redirect ke halaman Bank BRI
+        } else if (paymentMethod === "bank_mandiri") {
+            window.location.href = "https://www.bankmandiri.co.id"; // Redirect ke halaman Bank Mandiri
+        } else if (paymentMethod === "dana") {
+            window.location.href = "https://link.dana.id/m/dana"; // Redirect ke Dana
+        } else if (paymentMethod === "gopay") {
+            window.location.href = "https://www.gojek.com/gopay/"; // Redirect ke Gopay
+        } else {
+            alert("Pilih metode pembayaran terlebih dahulu!"); // Notifikasi jika belum memilih metode pembayaran
+            return false; // Mencegah form dikirim
+        }
+
+        return false; // Mencegah form dikirim secara normal agar diarahkan sesuai metode pembayaran
+    }
+    </script>
     <script src="../script.js"></script>
 </body>
 </html>

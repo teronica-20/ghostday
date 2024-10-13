@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "nama_database"; // Ganti dengan nama database Anda
+$dbname = "tugas"; // Ganti dengan nama database Anda
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -22,10 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $delivery_date = $_POST['delivery_date'];
     $delivery_time = $_POST['delivery_time'];
 
-    // Simpan ke temporary_orders
-    $sql = "INSERT INTO temporary_orders (customer_name, product_name, quantity, address, payment_method, delivery_date, delivery_time)
-            VALUES ('$customer_name', '$product_name', $quantity, '$address', '$payment_method', '$delivery_date', '$delivery_time')";
-    
+    $stmt = $conn->prepare("INSERT INTO temporary_orders (customer_name, product_name, quantity, address, payment_method, delivery_date, delivery_time)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssissss", $customer_name, $product_name, $quantity, $address, $payment_method, $delivery_date, $delivery_time);
+$stmt->execute();
+
     if ($conn->query($sql) === TRUE) {
         echo "Pesanan Anda telah disimpan sementara.";
     } else {
@@ -37,16 +38,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['order_complete'])) {
         $order_id = $_POST['order_id'];
-        $sql_move = "INSERT INTO completed_orders (customer_name, product_name, quantity, address, payment_method, delivery_date, delivery_time)
-                     SELECT customer_name, product_name, quantity, address, payment_method, delivery_date, delivery_time 
-                     FROM temporary_orders WHERE id = $order_id";
-
-        $conn->query($sql_move);
-        $sql_delete = "DELETE FROM temporary_orders WHERE id = $order_id";
-        $conn->query($sql_delete);
-
+    
+        // Pindahkan data ke completed_orders
+        $stmt_move = $conn->prepare("INSERT INTO completed_orders (customer_name, product_name, quantity, address, payment_method, delivery_date, delivery_time)
+                                     SELECT customer_name, product_name, quantity, address, payment_method, delivery_date, delivery_time 
+                                     FROM temporary_orders WHERE id = ?");
+        $stmt_move->bind_param("i", $order_id);
+        $stmt_move->execute();
+    
+        // Hapus dari temporary_orders
+        $stmt_delete = $conn->prepare("DELETE FROM temporary_orders WHERE id = ?");
+        $stmt_delete->bind_param("i", $order_id);
+        $stmt_delete->execute();
+    
         echo "Pesanan telah dipindahkan ke completed_orders.";
-    }
+    }    
 }
 
 $conn->close();
